@@ -1,7 +1,5 @@
 ###############################################
 # 초기화
-# m만큼의 1차원 배열 초기화
-arr = [0] * m 
 
 # n*m 크기의 2차원 배열 초기화
 arr = [[0] * m for _ in range(n)] 
@@ -12,18 +10,9 @@ remove_set = {3,5} # arr의 원소 3, 5를 제거하고자 한다.
 arr = [i for i in arr if i not in remove_set]
 print(arr)
 
-
 ###############################################
+
 # 입출력
-
-# input ex) 5
-n = int(input())
-
-# input ex) 3 5 7
-n,m,k = map(int, input().split())
-
-# input ex) 50 30 40 50 20
-arr = list(map(int, input().split()))
 
 # 2차원 배열 형태 입력
 arr = [[int(x) for x in input().split()] for y in range(10)] 
@@ -42,18 +31,62 @@ for i in range(n):
 
 import sys
 
-n = int(input())
-i=0
-data = []
-
 for i in range(n):
   data.append(sys.stdin.readline().rstrip())
 
 print(data)
-###############################################
-# 순열, 조합
 
 ###############################################
+
+# 순열, 조합
+from itertools import permutations
+
+arr = [3, 5, 7]
+print(list(permutations(arr, 2)))  # arr 에서 중복없이, 순서 상관없이 2개를 뽑는 경우의 수
+
+from itertools import combinations
+
+arr = [3, 5, 7]
+print(list(combinations(arr, 2)))  # arr 에서 중복없이, 순서에 따라 2개를 뽑는 경우의 수
+
+from itertools import product
+
+arr = [3, 5, 7]
+print(list(product(arr, repeat=2)))  # arr 에서 중복허용, 순서 상관없이 2개를 뽑는 경우의 수
+
+from itertools import combinations_with_replacement
+
+arr = [3, 5, 7]
+print(list(combinations_with_replacement(arr, 2)))  # arr 에서 중복허용, 순서 상관에 따라 2개를 뽑는 경우의 수
+
+###############################################
+
+#파이썬에서 데이터 타입(str, int, list)간의 변환
+
+# 1. int 형변환
+num = 120
+num = str(num)  # num = str type
+num = list(str(num))  # num = list type
+
+# 2. list(int 원소) 형변환
+arr = [1, 2, 3]
+for i in range(len(arr)):
+    arr[i] = str(arr[i])
+arr = ''.join(arr)  # arr = str type
+arr = int(arr)  # arr = int type
+
+# 3. list(str 원소) 형변환
+arr = ["1", "2", "3"]
+arr = ''.join(arr)  # arr = str type
+arr = int(arr)  # arr = int type
+
+# 4. str 형변환
+string = "50"
+string = int(string)  # string = int type
+string = list(string)  # string = list type
+
+###############################################
+
 # 이진탐색
 from bisect import bisect_left, bisect_right
 
@@ -67,8 +100,10 @@ a = [1,2,3,3,3,3,4,4,8,9]
 print(CountByRange(a,4,4)) # 원소가 4인 데이터의 개수 출력
 
 print(CountByRange(a,-1,3)) # 원소의 값이 [-1,3]인 데이터의 개수 출력
+
 ###############################################
-# collections
+
+# deque 활용
 from collections import deque
 
 data = deque([1,2,3,4])
@@ -76,3 +111,55 @@ data.append() #맨 뒤에 원소 추가
 data.appendleft() #맨 앞에 원소 추가
 data.pop() #맨 뒤에 원소 삭제
 data.popleft() #맨 앞에 원소 삭제
+###############################################
+# 2차원 리스트(행렬)을 90도 회전시키는 함수 #
+
+def rotate_a_matrix_90_degree(a):
+  row_length = len(a) # 행렬의 행 길이
+  column_length = len(a[0]) # 행렬의 열 길이
+  
+  res = [[0] * row_length for _ in range(column_length)] # 2차원 행렬 초기화
+
+  for r in range(row_length):
+    for c in range(column_length):
+      res[c][row_length - 1 - r] = a[r][c]
+  
+  return res
+
+# 2차원 리스트(행렬)을 180도 회전시키는 함수 #
+
+def rotate_a_matrix_180_degree(a):
+  row_length = len(a) # 행렬의 행 길이
+  column_length = len(a[0]) # 행렬의 열 길이
+  
+  res = [[0] * column_length for _ in range(row_length)] # 2차원 행렬 초기화
+
+  for r in range(row_length):
+    for c in range(column_length):
+      res[row_length - 1 - r][column_length - 1 - c] = a[r][c]
+  
+  return res
+
+# 2차원 리스트(행렬)을 270도 회전시키는 함수 #
+
+def rotate_a_matrix_270_degree(a):
+  row_length = len(a) # 행렬의 행 길이
+  column_length = len(a[0]) # 행렬의 열 길이
+  
+  res = [[0] * row_length for _ in range(column_length)] # 2차원 행렬 초기화
+
+  for r in range(row_length):
+    for c in range(column_length):
+      res[column_length -1 - c][r] = a[r][c]
+  
+  return res
+
+a = [
+  [1,2,3,4],
+  [5,6,7,8],
+  [9,10,11,12]
+]
+
+print(rotate_a_matrix_90_degree(a))
+print(rotate_a_matrix_180_degree(a))
+print(rotate_a_matrix_270_degree(a))
