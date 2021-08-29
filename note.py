@@ -1,9 +1,12 @@
+# 경우의 수 리스트 형태로 반환하기
+import itertools
+
+data = [1, 2, 3]
+
+for x in itertools.permutations(data, 2):
+    print(list(x))
+
 ###############################################
-# 초기화
-
-# n*m 크기의 2차원 배열 초기화
-arr = [[0] * m for _ in range(n)] 
-
 # 특정한 값의 원소 모두 제거하기
 arr = [1,2,3,4,5,5,5]
 remove_set = {3,5} # arr의 원소 3, 5를 제거하고자 한다.
@@ -11,33 +14,6 @@ arr = [i for i in arr if i not in remove_set]
 print(arr)
 
 ###############################################
-
-# 입출력
-
-# 2차원 배열 형태 입력
-arr = [[int(x) for x in input().split()] for y in range(10)] 
-
-# n*m 행렬 출력
-for i in range(n):
-    for j in range(m):
-        print(arr[i][j], end=' ')
-    print('')
-
-# n만큼 줄바꿈으로 구별하여 빠른 입력 
-# input ex)
-# 1
-# 2
-# 3
-
-import sys
-
-for i in range(n):
-  data.append(sys.stdin.readline().rstrip())
-
-print(data)
-
-###############################################
-
 # 순열, 조합
 from itertools import permutations
 
@@ -60,7 +36,6 @@ arr = [3, 5, 7]
 print(list(combinations_with_replacement(arr, 2)))  # arr 에서 중복허용, 순서 상관에 따라 2개를 뽑는 경우의 수
 
 ###############################################
-
 #파이썬에서 데이터 타입(str, int, list)간의 변환
 
 # 1. int 형변환
