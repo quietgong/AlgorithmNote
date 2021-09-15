@@ -1,3 +1,14 @@
+# 에라토스테네스의 체로 n보다 작거나 같은 수 중 소수 개수 return
+def solution(n):
+    num=set(range(2,n+1))
+
+    for i in range(2,n+1):
+        if i in num:
+            num-=set(range(2*i,n+1,i)) # 차집합
+    return len(num)
+
+###############################################
+
 # 정수로 받은뒤, 배열로 바꾸고, 각 배열의 원소를 정수로 취급하기
 n=list(str(n))
 n=list(map(int, n))
