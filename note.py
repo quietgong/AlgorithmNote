@@ -1,3 +1,26 @@
+# enumerate 함수 : 반복문 사용과 함께 몇번째 반복인지 알 수 있다.
+t = [1, 5, 7, 33]
+for i, v in enumerate(t):
+    print(f"i={i}, v={v}")
+# i=0, v=1
+# i=1, v=5
+# i=2, v=7
+# i=3, v=33
+
+###############################################
+
+# zip 함수 : 동일한 개수로 이루어진 자료형을 묶어 준다.
+language = ["English", "Korean", "Spanish"]
+preference = [3, 5, 7]
+for lang, pref in zip(language, preference):
+    print(f"lang={lang}, pref={pref}")
+
+# lang=English, pref=3
+# lang=Korean, pref=5
+# lang=Spanish, pref=7
+
+###############################################
+
 # 에라토스테네스의 체로 n보다 작거나 같은 수 중 소수 개수 return
 def solution(n):
     num=set(range(2,n+1))
