@@ -203,6 +203,3 @@ print(rotate_a_matrix_90_degree(a))
 print(rotate_a_matrix_180_degree(a))
 print(rotate_a_matrix_270_degree(a))
 ###############################################
-# 아스키코드
-chr(97) = 'a'
-ord('a') = 97
